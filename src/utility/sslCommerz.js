@@ -21,10 +21,10 @@ exports.setSslCommerz=async(req,res)=>{
         payment_status:"pending",
         products:newProduct,
         shipping,
-        success_url: 'https://bakiz-server.monibbormon.com/api/v1/success',
-        fail_url: 'https://bakiz-server.monibbormon.com/api/v1/fail',
-        cancel_url: 'https://bakiz-server.monibbormon.com/api/v1/cancel',
-        ipn_url: 'https://bakiz-server.monibbormon.com/api/v1/ipn',
+        success_url: 'https://bakiz-server.onrender.com/api/v1/success',
+        fail_url: 'https://bakiz-server.onrender.com/api/v1/fail',
+        cancel_url: 'https://bakiz-server.onrender.com/api/v1/cancel',
+        ipn_url: 'https://bakiz-server.onrender.com/api/v1/ipn',
         shipping_method: 'Courier',
         product_name: 'Computer.',
         product_category: 'Electronic',
@@ -53,7 +53,7 @@ exports.setSslCommerz=async(req,res)=>{
         value_d: 'ref004_D'
     };
     const order = await OrderModel.create(data);
-    const sslcommer = new SSLCommerzPayment('bakiz63844ef0a4301', 'bakiz63844ef0a4301@ssl') //true for live default false for sandbox
+    const sslcommer = new SSLCommerzPayment('bakiz63844ef0a4301', 'bakiz63844ef0a4301@ssl',false) //true for live default false for sandbox
     sslcommer.init(data).then(data => {
         if(data.GatewayPageURL){
             res.json(data.GatewayPageURL)
@@ -62,7 +62,5 @@ exports.setSslCommerz=async(req,res)=>{
                 message: "SSL session was not successful"
             })
         }
-        //process the response that got from sslcommerz 
-        //https://developer.sslcommerz.com/doc/v4/#returned-parameters
     });
 }
