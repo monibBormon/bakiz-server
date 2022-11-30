@@ -22,7 +22,12 @@ exports.failPayment=async(req,res)=>{
     const order = await dataModel.deleteOne({tran_id:req.body.tran_id})
     res.redirect(`https://bakiz-monib.netlify.app/cart`)
 }
-
+exports.falseReturn=async(req,res)=>{
+    if(res === false){
+        const order = await dataModel.deleteOne({tran_id:req.body.tran_id})
+        res.redirect(`https://bakiz-monib.netlify.app/false`)
+    }
+}
 exports.OrderDetails= async(req,res)=>{
     const userEmail = req.headers['email'];
     let data = await dataModel.aggregate([
