@@ -3,12 +3,12 @@ var nodemailer = require('nodemailer');
 const sendEmailUtility= async (EmailTo, EmailText, EmailSubject) => {
 
     let transporter = nodemailer.createTransport({
-        host: 'mail.monibbormon.com',
-        port: 465,
+        host: 'mail.teamrabbil.com',
+        port: 25,
         secure: false,
         auth: {
-            user: "_mainaccount@monibbormon.com",
-            pass: 'K9rP[D3W1l-qBe2D'
+            user: "info@teamrabbil.com",
+            pass: '~sR4[bhaC[Qs'
         },tls: {
             rejectUnauthorized: false
         },
@@ -16,7 +16,7 @@ const sendEmailUtility= async (EmailTo, EmailText, EmailSubject) => {
 
 
     let mailOptions = {
-        from: 'Bakiz E-commerce <mail.monibbormon.com>',
+        from: 'Bakiz E-commerce <info@teamrabbil.com>',
         to: EmailTo,
         subject: EmailSubject,
         text: EmailText
